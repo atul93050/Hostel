@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 Route::controller(UserController::class)->group(function(){
-    Route::get('/register','showRegisteration')->name('showRegister');
+    Route::get('/register','showUserRegisteration')->name('showRegister');
     Route::post('/register','register')->name('submit.register');
 });
 
