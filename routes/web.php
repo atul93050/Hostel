@@ -1,19 +1,17 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoomController;
+// use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
+    // Route::get('arpit/registration',function(){
+    //     return view('arpit.room-registration');
+    // });
+    // Route::view('arpit/registration','arpit.room-registration');
+    
+    Route::get('registration',[RoomController::class, 'roomRegistration']);
+    Route::post('registration',[RoomController::class, 'roomRegisterd'])->name('room.registration');
+?>
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::controller(UserController::class)->group(function(){
-    Route::get('/register','showRegisteration')->name('showRegister');
-    Route::post('/register','register')->name('submit.register');
-});
-
-Route::controller(AuthController::class)->group(function(){
-    Route::get('/login','showLogin')->name('showLogin');
-    Route::post('/login','login')->name('submit.login');
-});

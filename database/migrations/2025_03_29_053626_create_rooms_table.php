@@ -13,16 +13,18 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id('room_id');
-            $table->unsignedBigInteger('owner_id')->nullable(false);
+            // $table->integer('room_id')->nullable()  ;
+            $table->unsignedBigInteger('owner_id')->nullable();
             $table->string('title')->nullable(false);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->decimal('price',10,2);
             $table->string('location')->nullable(false);
             $table->text('amenities');
             $table->boolean('available')->default(true);
             $table->boolean('is_verified')->default(false);
             $table->timestamp('created_at')->useCurrent();
-            $table->foreign('owner_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->timestamp('updated_at')->useCurrent();
+            // $table->foreign('owner_id')->references('user_id')->on('users')->onDelete('cascade');
        
         });
     }
